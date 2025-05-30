@@ -1,0 +1,965 @@
+<body>
+<style>
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body 
+{
+    color: #ff6600;
+    background-color: #ff6600; /* Updated background color */
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background:#ff6600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar a {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+}
+
+.navbar a:hover {
+    color: #0ef;
+}
+
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 70px 10% 0;
+}
+
+.home-content {
+    max-width: 600px;
+}
+
+.home-content h3, .home-content h1 {
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+}
+
+.home-content h3 {
+    font-size: 30px;
+    font-weight: 700;
+    animation-delay: .7s;
+}
+
+.home-content h3:nth-of-type(2) {
+    margin-bottom: 30px;
+}
+
+.home-content h3 span {
+    color: #0ef;
+}
+
+.home-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin: -3px 0;
+}
+
+.home-content p {
+    font-size: 20px;
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .3s;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-sci a:hover {
+    background: #ff751a;
+    color: #081b29;
+    box-shadow: 0 0 20px #0ef;
+}
+
+.btn-box {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #0ef;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #081b29;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 1.5s;
+}
+
+.btn-box:hover {
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan, 0 0 200px cyan;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    text-align: left;
+    gap: 1.5rem;
+    padding: 140px 10%;
+    padding-top: 60px;
+}
+
+.about-text h2 {
+    font-size: 40px;
+}
+
+.about-text h2 span {
+    color: #0ef;
+}
+
+.about-text h4 {
+    font-size: 29px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.7;
+}
+
+.about-text p {
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+}
+
+.sub-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+.sub-title span {
+    display: block;
+}
+.heading1 {
+    margin-bottom: 20px; 
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container1 {
+    width: 600px;
+    height: 500px;
+    padding: 70px 65px;
+    margin-left: 120px;
+}
+
+.heading1 {
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 5px;
+    margin-bottom: 50px;
+}
+
+.bar {
+    font-size: 23px;
+}
+
+.Technical-bars .bar {
+    margin: 40px 0;
+}
+
+.Technical-bars .bar:first-child {
+    margin-top: 0;
+}
+
+.Technical-bars .bar:last-child {
+    margin-bottom: 0;
+}
+
+.Technical-bars .bar .info {
+    margin-bottom: 5px;
+}
+
+.Technical-bars .bar .info span {
+    font-size: 17px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+}
+
+.Technical-bars .bar .progress-line {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 5px;
+    background-color: #000000;
+    animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+@keyframes animate {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.Technical-bars .bar .progress-line span {
+    height: 100%;
+    background-color: #0ef;
+    position: absolute; 
+    border-radius: 10px;
+    animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.progress-line.ms-excel span {
+    width: 90%;
+}
+
+.progress-line.mysql span {
+    width: 80%;
+}
+
+.progress-line.power-bi span {
+    width: 90%;
+}
+
+.progress-line.tableau span {
+    width: 80%;
+}
+
+.progress-line.python span {
+    width: 50%;
+}
+.progress-line span::after{
+    position: absolute;
+    padding: 1px 8px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    top: -28px;
+    right: -20px;
+    animation: showText0.5s 1.5s linear forwards;
+    opacity: 0;
+}
+.progress-line.ms-excel span::after{
+    content: "90%";
+}
+.progress-line.mysql span::after{
+    content: "80%";
+}
+.progress-line.power-bi span::after{
+    content: "60%";
+}
+.progress-line.tableau span::after{
+    content: "80%";
+}
+.progress-line.python span::after{
+    content: "40%";
+}
+.progress-line.ms-excel span::before{
+    content:"";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-top-color: #000;
+    top: -10px;
+    right: 0;
+    animation: showText 0.5s 1.5s linear forwards;
+    opacity: 0;
+}
+@keyframes showText{
+    100%{
+        opacity: 1;
+    }
+}
+.radial-bars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+
+.radial-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px; 
+    padding: 20px; 
+    position: relative;
+    width: 120px; 
+    height: 190px; 
+}
+
+svg {
+    width: 120px;
+    height: 120px;
+    transform: rotate(-90deg);
+}
+
+circle {
+    fill: none;
+    stroke-width: 7;
+}
+
+.progress-bar {
+    stroke: #e6e6e6;
+}
+
+.path {
+    stroke: #3498db;
+    stroke-dasharray: 314; 
+    stroke-dashoffset: 314;
+    animation: progressAnimation 2s ease-out forwards;
+}
+
+.path-1 {
+    --progress: 70;
+}
+
+.path-2 {
+    stroke: #3498db; 
+    --progress: 60;
+}
+
+.path-3 {
+    stroke: #3498db; 
+    --progress: 60;
+}
+
+.path-4 {
+    stroke: #3498db; 
+    --progress: 50;
+}
+
+.percentage {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.Creativity, .Communication, .ProblemSolving, .TeamWork {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.Creativity::before,
+.Communication::before,
+.ProblemSolving::before,
+.TeamWork::before {
+    content: '';
+    display: block;
+    margin-bottom: 5px;
+}
+
+@keyframes progressAnimation {
+    from {
+        stroke-dashoffset: 314;
+    }
+    to {
+        stroke-dashoffset: calc(314 - (314 * var(--progress)) / 100);
+    }
+}
+.path-1 {
+    animation-delay: 0s;
+}
+
+.path-2 {
+    animation-delay: 0.2s;
+}
+
+.path-3 {
+    animation-delay: 0.4s;
+}
+
+.path-4 {
+    animation-delay: 0.6s;
+}
+
+
+@keyframes slideRight {
+    0% {
+        transform: translate(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0px);
+        opacity: 1;
+    }
+}
+
+#portfolio{
+    padding: 120px 0;
+}
+.portfolio-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-gap: 50px;
+    margin-bottom: 70px;
+
+}
+.portfolio-list div{
+    background-color: #262626;
+    padding:30px ;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+.portfolio-list div i{
+    font-size: 50px ;
+    margin-bottom: 30px;
+}
+.portfolio-list div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+
+}
+.portfolio-list div a{
+    text-decoration: none;
+    color: #0ef;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.portfolio-list div:hover{
+    background:#ff004f ;
+    transform: translateY(-10px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: flex-start; 
+    text-align: left;
+    gap: 3rem;
+    padding: 10px;
+    margin-top: 120px;
+}
+
+.contact-text {
+    padding: 120px;
+}
+
+.contact-text h2 {
+    font-size: 40px;
+    line-height: 1;
+    text-align: center;
+}
+
+.contact-text h2 span {
+    color: #0ef;
+}
+
+.contact-text h4 {
+    margin: 10px 0;
+    color: rgb(228, 228, 228);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.contact-text p {
+    color: rgb(177, 177, 177);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+
+.contact-list {
+    margin-bottom: 3rem;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.contact-list i {
+    display: inline-block;
+    color: #0ef;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+}
+
+.contact-list li a:hover {
+    transform: scale(1.01) translateY(-5px);
+    color: #0ef;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.contact-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    transition: 0.5s ease;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.contact-icons a:hover {
+    background: #0ef;
+    color: #000;
+    box-shadow: 0 0 20px #0ef;
+}
+
+.contact-form form {
+    position: relative;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 12px;
+    background: #555557;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 200px;
+}
+
+.contact-form form .send {
+    display: inline-block;
+    padding: 14px 60px;
+    background: #0ef;
+    border-radius: 40px;
+    font-size: 18px;
+    color: #081b29;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px #0ef, 0 0 25px #0ef;
+}
+
+.contact-form form .send:hover {
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan, 0 0 200px cyan;
+}
+
+/* Keyframes for animation */
+@keyframes slideTop {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes slideTop{
+   0% {
+        transform: translateY(-100px);
+        opacity: 0;
+   }
+   100% {
+       transform: translateX(0px);
+       opacity: 1;
+
+   }
+}
+@keyframes slideBottom{
+   0% {
+        transform: translateY(-100px);
+        opacity: 0;
+   }
+   100% {
+       transform: translateX(0px);
+       opacity: 1;
+
+   }
+}
+
+</style>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">Bhagyashri</a>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a> 
+            <a href="#contact">Contact</a>
+        </nav> 
+    </header>
+     <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, It's Me</h3>
+            <h1>Bhagyashri Baraskar</h1>
+            <h1><span class="element"></span></h1>
+            <h3><span></span></h3>
+            <p> Expert in creating data reports and dashboards using Excel, SQL, Power BI, Python, and Tableau.
+</p>
+
+            <div class="home-sci">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+            </div>
+            <a href="#" class="btn-box">Hire Me</a>
+        </div>
+    </section>
+
+
+    <span class="home-imgHover"></span>
+   </section>
+   
+
+   <section class="about" id="about">
+
+    <div class="about-text">
+        <h2>About<span>Me</span></h2>
+        <h4>Data Analyst</h4>
+        <p> Welcome to my portfolio.I am a skilled Data Analyst
+        I am currently studying MSc Computer Science at Dr. Babasaheb Ambedkar Marathwada University, Chhatrapati Sambhajinagar 431001.<br>
+         I have knowledge of MS-Excel,MYSql,Power BI,Python, <br>
+         I am good at handling tools such as Raspberry Pi and Arduino.<br>
+       I am a future data analyst.</p>
+
+         <a href="#" class="btn-box">More About Me</a>
+
+    </div>  
+    
+   </section>
+
+
+   <section id="skills"></section>
+   <h1 class="sub-title"><span>My Skills</span></h1>
+
+<section>
+    <div class="container1">
+        <h2 class="heading1">Technical Skills</h2>
+        <div class="Technical-bars">
+            <div class="bar">
+                <i style="color:#c95d2e" class='bx bxl-ms-excel'></i>
+                <div class="info"><span>MS-Excel</span></div>
+                <div class="progress-line ms-excel"><span></span></div>
+            </div>
+
+            <div class="bar">
+                <i style="color:#147bbc" class='bx bxl-mysql'></i>
+                <div class="info"><span>MYSQL</span></div>
+                <div class="progress-line mysql"><span></span></div>
+            </div>
+
+            <div class="bar">
+                <i style="color:#b0bc1e" class='bx bxl-power-bi'></i>
+                <div class="info"><span>Power BI</span></div>
+                <div class="progress-line power-bi"><span></span></div>
+            </div>
+
+            <div class="bar">
+                <i style="color:#c32ec9" class='bx bxl-tableau'></i>
+                <div class="info"><span>Tableau</span></div>
+                <div class="progress-line tableau"><span></span></div>
+            </div>
+
+            <div class="bar">
+                <i style="color:#69bcbc" class=''></i>
+                <div class="info"><span>Python</span></div>
+                <div class="progress-line python"><span></span></div>
+            </div>
+        </div>
+    </div>
+
+
+
+   <div class="container1">
+        <h2 class="heading1">Professional Skills</h2>
+    <div class="radial-bars">
+
+
+<section class="radial-bars">
+    <div class="radial-bar">
+        <svg>
+            <circle class="progress-bar" cx="60" cy="60" r="50"></circle>
+            <circle class="path path-1" cx="60" cy="60" r="50"></circle>
+        </svg>
+        <div class="percentage">70%</div>
+        <div class="Creativity">Creativity</div>
+    </div>
+    <div class="radial-bar">
+        <svg>
+            <circle class="progress-bar" cx="60" cy="60" r="50"></circle>
+            <circle class="path path-1" cx="60" cy="60" r="50"></circle>
+        </svg>
+
+        <div class="percentage">80%</div>
+        <div class="Communication">Communication</div>
+    </div>
+    <div class="radial-bar">
+        <svg>
+            <circle class="progress-bar" cx="60" cy="60" r="50"></circle>
+            <circle class="path path-2" cx="60" cy="60" r="50"></circle>
+        </svg>
+
+        <div class="percentage">60%</div>
+        <div class="Problem Solving">Problem Solving</div>
+    </div>
+   <div class="radial-bar">
+        <svg>
+            <circle class="progress-bar" cx="60" cy="60" r="50"></circle>
+            <circle class="path path-2" cx="60" cy="60" r="50"></circle>
+        </svg>
+        <div class="percentage">50%</div>
+        <div class="TeamWork">TeamWork</div>
+    </div>
+</section>
+</section>
+
+
+<section id="portfolio"></section>
+    <div class="container">
+        <h1 class="sub-title">My Projects</h1>
+        <div class="portfolio-list">
+            <div>
+
+                <i class='bx bx-code-alt'></i>
+                <h2>Strike for Blind Person</h2>
+                <p>A smart cane that helps visually impaired individuals navigate obstacles.</p>
+                <p>Technologies used: Arduino, Ultrasonic Sensors, Buzzer</p>
+                <p>Outcome: Improved mobility and safety for blind users in real-world environments.</p>
+                
+            </div>
+            <div>
+
+                <i class='bx bx-crop'></i>
+                <h2>Smart Health Assistant </h2>
+                <p> that provides symptom-based advice and preliminary diagnoses.
+</p>
+<ul>
+             <p>Designed an intuitive and interactive user interface using <strong>HTML, CSS, and JavaScript</strong> for an engaging user experience.</p>
+             <p>Built a <strong>reliable medical database</strong> to ensure accurate and consistent suggestions.</p>
+             <p>Utilized technologies including <strong>Python, Flask, MySQL</strong>, and front-end web development tools (<strong>HTML/CSS/JavaScript</strong>).</p>
+</ul>
+
+                
+                
+            </div>
+            <div>
+                <i class='bx bxl-apple'></i>
+               <h2>Created Employee Dashboard using Microsoft Excel</h2>
+             <p>
+    Built a professional Excel dashboard to analyze employee data, including job roles, departments, salaries,
+    bonus percentages, age demographics, and exit trends. Utilized Excel tools such as PivotTables, charts,
+    slicers, and conditional formatting to create visual summaries and interactive filters for HR insights.
+  </p>
+</div>
+            </div>
+            
+        </div>
+    
+        
+    </div>
+    
+</section>
+
+
+
+
+
+<section class="contact" id="contact">
+    <div class="contact-text">
+        <h2>Contact<span>Me</span></h2>
+        <h4> Let's work Together</h4>
+        <p>I'm excited to hear from you! Whether you have a project in mind, want to collaborate, or simply want to say hello, feel free to reach out using the form below. I'm always eager to explore new opportunities and connect with fellow creatives.</p>
+        <div class="contact-list">
+            <li><i class='bx bxs-send'></i>baraskarb246@gmail.com</li>
+            <li><i class='bx bx-phone'></i>8010253406</li>
+            
+        </div>
+        <div class="contact-icons">
+            <a href=""><i class='bx bxl-facebook-circle'></i></a>
+            <a href=""><i class='bx bxl-twitter' ></i></a>
+            <a href=""><i class='bx bxl-instagram'></i></a>
+            <a href=""><i class='bx bxl-linkedin'></i></a>
+            
+        </div>
+
+        
+    </div>
+    <div class="contact-form">
+        <form action="">
+            <input type="" placeholder="Enter your name">
+            <input type="" placeholder="Enter your Email">
+
+            <input type="" placeholder=" Enter your subject">
+            <textarea name="" id="" cols="40" rows="10" placeholder=" enter your message"></textarea>
+        <input type="submit" value="submit" class="send">
+        </form>  
+   </div>
+    
+</section>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed(".element", {
+            strings: ["Data Analyst", "Freelancer"],
+            typeSpeed: 100,
+            backSpeed: 100,
+            backDelay: 1000,
+            loop: true
+        });
+    </script>
+
+
+</body>
+</html>
+    
